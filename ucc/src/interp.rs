@@ -26,6 +26,7 @@ pub(crate) enum InterpCommand {
     Clear,
     Reset,
     Help,
+    Quit,
 }
 
 pub(crate) static HELP: &'static str = "\
@@ -40,6 +41,7 @@ Commands available:
    :clear                   clear all definitions
    :reset                   reset the interpreter
    :help                    display this list of commands
+   :quit                    quit the interpreter
 ";
 
 pub struct Interp {
@@ -133,6 +135,9 @@ impl Interp {
             }
             Ok(InterpCommand::Help) => {
                 w.write_all(HELP.as_bytes())?;
+            }
+            Ok(InterpCommand::Quit) => {
+                std::process::exit(0);
             }
         }
         w.flush()

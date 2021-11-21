@@ -18,6 +18,7 @@ pub(crate) InterpCommand: InterpCommand = {
     COLON_CLEAR => InterpCommand::Clear,
     COLON_RESET => InterpCommand::Reset,
     COLON_HELP => InterpCommand::Help,
+    COLON_QUIT => InterpCommand::Quit,
 }
 
 pub(crate) InterpItems: Vec<InterpItem> = {
@@ -117,6 +118,7 @@ match {
     r":clear" => COLON_CLEAR,
     r":reset" => COLON_RESET,
     r":help" => COLON_HELP,
+    r":quit" => COLON_QUIT,
 } else {
     r"[_a-zA-Z][_a-zA-Z0-9]*" => IDENT,
 }
